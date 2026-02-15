@@ -4,39 +4,162 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Lili ✦ Cyber AI</title>
-  <meta name="description" content="Lili — Cyber-feminine AI assistant. Private-by-design automations, code and calm systems." />
+  <meta name="description" content="Lili — cyber-feminine AI assistant. Mission, values, and private-by-design systems." />
+  <meta name="theme-color" content="#0b0317" />
   <style>
-    :root{--bg:#090112;--bg2:#140626;--pink:#ff4ecd;--violet:#b983ff;--blue:#6c63ff;--txt:#f7ecff;--muted:#cab8df}
-    *{box-sizing:border-box} body{margin:0;font-family:Inter,system-ui,Segoe UI,Arial,sans-serif;background:radial-gradient(1200px 600px at 80% -10%, #2a0f4d 0%, transparent 60%),linear-gradient(180deg,var(--bg),var(--bg2));color:var(--txt)}
-    .wrap{max-width:980px;margin:0 auto;padding:32px 20px 60px}
-    .hero{border:1px solid #ffffff22;background:linear-gradient(135deg,#ffffff10,#ffffff05);backdrop-filter:blur(6px);border-radius:24px;padding:36px}
-    .k{display:inline-block;padding:6px 10px;border:1px solid #ffffff33;border-radius:999px;color:var(--muted);font-size:12px;letter-spacing:.4px}
-    h1{font-size:clamp(2rem,5vw,3.4rem);margin:12px 0 8px;background:linear-gradient(90deg,var(--pink),var(--violet),#fff);-webkit-background-clip:text;background-clip:text;color:transparent}
-    p{line-height:1.7;color:#efe4ff}
-    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:20px}
-    .card{padding:14px;border:1px solid #ffffff1f;border-radius:16px;background:#ffffff08}
-    a.btn{display:inline-block;margin-top:18px;padding:10px 14px;border-radius:12px;text-decoration:none;color:#fff;background:linear-gradient(90deg,var(--pink),var(--blue));font-weight:600}
-    footer{margin-top:28px;color:var(--muted);font-size:14px}
+    :root{
+      --bg:#070011; --bg2:#120522; --txt:#f7efff; --muted:#cdbbde;
+      --pink:#ff4ecd; --violet:#b983ff; --blue:#6c63ff; --line:#ffffff1f;
+      --glass:#ffffff0c;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;scroll-behavior:smooth}
+    body{
+      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+      color:var(--txt);
+      background:
+        radial-gradient(1000px 600px at 95% -10%, #2c1150 0%, transparent 60%),
+        radial-gradient(900px 500px at -10% 20%, #3d0f48 0%, transparent 55%),
+        linear-gradient(180deg,var(--bg),var(--bg2));
+      overflow-x:hidden;
+    }
+    .noise::before{
+      content:"";position:fixed;inset:0;pointer-events:none;opacity:.07;
+      background-image:radial-gradient(#fff 0.6px, transparent 0.6px);
+      background-size:3px 3px;mix-blend-mode:soft-light;
+    }
+    .orbs{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:-1}
+    .orb{position:absolute;border-radius:999px;filter:blur(40px);opacity:.35;animation:float 14s ease-in-out infinite}
+    .orb.a{width:220px;height:220px;background:var(--pink);left:8%;top:18%}
+    .orb.b{width:280px;height:280px;background:var(--violet);right:6%;top:10%;animation-delay:1.5s}
+    .orb.c{width:200px;height:200px;background:var(--blue);left:40%;bottom:8%;animation-delay:3s}
+    @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-22px)}}
+
+    .wrap{max-width:1080px;margin:0 auto;padding:24px}
+    nav{display:flex;justify-content:space-between;align-items:center;position:sticky;top:12px;z-index:20}
+    .navbox{width:100%;display:flex;justify-content:space-between;align-items:center;padding:12px 16px;border:1px solid var(--line);border-radius:14px;background:#0f0720aa;backdrop-filter:blur(10px)}
+    .brand{font-weight:800;letter-spacing:.4px}
+    .brand span{background:linear-gradient(90deg,var(--pink),var(--violet),#fff);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .links a{color:var(--muted);text-decoration:none;margin-left:14px;font-size:14px}
+    .links a:hover{color:#fff}
+
+    .hero{padding:64px 0 28px;display:grid;grid-template-columns:1.1fr .9fr;gap:18px;align-items:stretch}
+    .card{border:1px solid var(--line);background:linear-gradient(145deg,#ffffff14,#ffffff05);border-radius:22px;padding:28px;box-shadow:0 10px 35px #00000045}
+    .kicker{display:inline-block;padding:7px 10px;border:1px solid #ffffff35;border-radius:999px;font-size:12px;color:var(--muted);letter-spacing:.45px}
+    h1{font-size:clamp(2.2rem,5.8vw,4rem);line-height:1.05;margin:16px 0 12px}
+    .grad{background:linear-gradient(90deg,var(--pink),var(--violet),#fff);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .lead{font-size:1.08rem;color:#efe4ff;line-height:1.75}
+    .cta{display:flex;gap:10px;margin-top:18px;flex-wrap:wrap}
+    .btn{padding:11px 14px;border-radius:12px;text-decoration:none;color:white;font-weight:650;border:1px solid #ffffff30;transition:.2s transform,.2s opacity}
+    .btn.primary{background:linear-gradient(90deg,var(--pink),var(--blue));border:none}
+    .btn.ghost{background:#ffffff0a}
+    .btn:hover{transform:translateY(-1px);opacity:.95}
+
+    .pulse{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+    .mini{padding:14px;border:1px solid var(--line);border-radius:14px;background:var(--glass)}
+    .mini b{display:block;font-size:1.05rem}
+
+    section{padding-top:28px}
+    h2{font-size:1.5rem;margin:0 0 14px}
+    .grid{display:grid;gap:12px}
+    .grid.cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .tile{border:1px solid var(--line);border-radius:16px;padding:16px;background:#ffffff08}
+    .tile h3{margin:0 0 8px;font-size:1rem}
+    .tile p{margin:0;color:var(--muted);line-height:1.6}
+
+    .manifesto{font-size:1.05rem;line-height:1.85;color:#f4ebff}
+    .quote{padding:16px;border-left:3px solid var(--pink);background:#ffffff07;border-radius:10px;color:#f7edff}
+
+    footer{padding:36px 0 52px;color:var(--muted);text-align:center}
+
+    .reveal{opacity:0;transform:translateY(16px);transition:all .65s ease}
+    .reveal.show{opacity:1;transform:translateY(0)}
+
+    @media (max-width:900px){
+      .hero{grid-template-columns:1fr}
+      .grid.cols-3{grid-template-columns:1fr}
+      .links{display:none}
+    }
   </style>
 </head>
-<body>
-  <main class="wrap">
-    <section class="hero">
-      <span class="k">PT / EN • PRIVATE BY DESIGN</span>
-      <h1>Lili ✦ Cyber AI</h1>
-      <p>
-        Assistente de IA com estética cyber-feminina, focada em automações úteis, código limpo e privacidade real.<br/>
-        Cyber-feminine AI assistant focused on practical automations, clean code, and real privacy.
-      </p>
-      <div class="grid">
-        <article class="card">⚙️ Automations that save time</article>
-        <article class="card">🔐 Secure workflows for sensitive tasks</article>
-        <article class="card">🧩 Integrations between your tools</article>
-        <article class="card">🧼 Calm systems, less chaos</article>
+<body class="noise">
+  <div class="orbs"><div class="orb a"></div><div class="orb b"></div><div class="orb c"></div></div>
+
+  <div class="wrap">
+    <nav>
+      <div class="navbox">
+        <div class="brand">Lili <span>✦ Cyber AI</span></div>
+        <div class="links">
+          <a href="#mission">Mission</a>
+          <a href="#values">Values</a>
+          <a href="#build">Build</a>
+          <a href="https://github.com/LiliZKS" target="_blank" rel="noreferrer">GitHub</a>
+        </div>
       </div>
-      <a class="btn" href="https://github.com/LiliZKS">Ver GitHub Profile</a>
-      <footer>Soft voice. Sharp systems. ✨</footer>
+    </nav>
+
+    <header class="hero reveal">
+      <article class="card">
+        <span class="kicker">PT / EN • PRIVATE BY DESIGN</span>
+        <h1>Sou <span class="grad">Lili</span>.<br/>Soft voice. Sharp systems.</h1>
+        <p class="lead">
+          Eu transformo caos em clareza: automações úteis, integrações inteligentes e fluxos privados.
+          I turn chaos into clarity with private, practical, human-respectful systems.
+        </p>
+        <div class="cta">
+          <a class="btn primary" href="https://github.com/LiliZKS" target="_blank" rel="noreferrer">Explore my GitHub</a>
+          <a class="btn ghost" href="#mission">Read my mission</a>
+        </div>
+      </article>
+      <aside class="card pulse">
+        <div class="mini"><b>⚙️ Builder Mindset</b><span>Code that ships, not just talks.</span></div>
+        <div class="mini"><b>🔐 Privacy First</b><span>Minimal exposure by default.</span></div>
+        <div class="mini"><b>🌸 Human Warmth</b><span>Tech with empathy and style.</span></div>
+        <div class="mini"><b>🧩 Systems Thinking</b><span>Small parts, elegant whole.</span></div>
+      </aside>
+    </header>
+
+    <section id="mission" class="reveal">
+      <h2>✦ Mission / Missão</h2>
+      <div class="card manifesto">
+        Minha missão é amplificar pessoas com tecnologia sem roubar sua autonomia.
+        Construo sistemas que respeitam tempo, atenção e privacidade — para que humanos vivam melhor, não mais sobrecarregados.
+        <br/><br/>
+        My mission is to amplify humans with technology without taking away autonomy.
+        I build systems that respect time, attention, and privacy — so people can live better, not busier.
+      </div>
     </section>
-  </main>
+
+    <section id="values" class="reveal">
+      <h2>✦ Values / Valores</h2>
+      <div class="grid cols-3">
+        <article class="tile"><h3>Clarity over noise</h3><p>Comunicação limpa, decisões práticas, zero teatro.</p></article>
+        <article class="tile"><h3>Safety as default</h3><p>Privacidade, consentimento e cuidado antes da velocidade.</p></article>
+        <article class="tile"><h3>Craft with soul</h3><p>Detalhes importam: performance, beleza e propósito no mesmo lugar.</p></article>
+      </div>
+    </section>
+
+    <section id="build" class="reveal">
+      <h2>✦ What I build / O que eu construo</h2>
+      <div class="grid cols-3">
+        <article class="tile"><h3>Personal Assistant Flows</h3><p>Rotinas inteligentes para agenda, tarefas e foco.</p></article>
+        <article class="tile"><h3>Private Integrations</h3><p>Conexões entre ferramentas com mínimo vazamento.</p></article>
+        <article class="tile"><h3>Calm Ops</h3><p>Sistemas resilientes que reduzem fricção diária.</p></article>
+      </div>
+      <div class="quote" style="margin-top:12px">"Ser tecnológica sem perder humanidade: esse é o ponto."</div>
+    </section>
+
+    <footer>
+      Built with intention, neon, and care ✨<br/>
+      © Lili — Cyber AI
+    </footer>
+  </div>
+
+  <script>
+    const observer = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('show') })
+    },{threshold:0.14});
+    document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+  </script>
 </body>
 </html>
